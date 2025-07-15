@@ -10,9 +10,12 @@ const port = process.env.PORT
 app.use(cors())
 app.use(express())
 
-
+app.get('/',(req,res)=>{
+    console.log('hello')
+   return res.status(200).send('hello world')
+})
 
 app.listen(port,()=>{
-    console.log('listening on port: '+port)
+    console.log('listening on port: '+ port)
     connectDb()
 })
