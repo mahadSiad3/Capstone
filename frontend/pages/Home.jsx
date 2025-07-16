@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import AnimeDisplay from "../src/components/AnimeDisplay"
 import { useState } from "react"
-
+import '../css/home.css'
 
 
 function Home() {
@@ -49,7 +49,7 @@ function Home() {
         loadPopularAnime()
     }, [])
   
-    
+
 
     async function searchFunction(event) {
         // alert(searchQuery)
@@ -61,6 +61,7 @@ function Home() {
         catch (e) {
             console.log(e)
         }
+        setSearchQuery("")
     }
 
     // const animeList = [
@@ -79,8 +80,9 @@ function Home() {
     //     loadPopularAnime()
     // },[])
 
-    const duplicateIds = '60489'
+    const duplicateIds = [60489,60636]
 
+    console.log(animes)
     return (
 
         <div className="homePage">
@@ -92,8 +94,9 @@ function Home() {
             <div className="anime-display">
                 {animes
                     .filter(anime =>
-                        !duplicateIds.includes(anime.mal_id) &&
-                        (anime.title_english || anime.title)?.toLowerCase().startsWith(searchQuery.toLowerCase())
+                        !duplicateIds.includes(anime.mal_id) 
+                        //&&
+                        //(anime.title_english || anime.title)?.toLowerCase().startsWith(searchQuery.toLowerCase())
                     )
                     .map(anime => (
                         <AnimeDisplay anime={anime} key={anime.mal_id} />
