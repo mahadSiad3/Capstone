@@ -82,7 +82,7 @@ function Home() {
 
     const duplicateIds = [60489,60636]
 
-    console.log(animes)
+    
     return (
 
         <div className="homePage">
