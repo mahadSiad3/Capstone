@@ -4,15 +4,20 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import animeDisplay from './components/AnimeDisplay'
 import Home from '../pages/Home'
+import { Route,Routes } from 'react-router-dom'
+import Collections from '../pages/Collections'
 
 
 function App() {
 
   return (
-    <>
-    { <Home/> }
-   
-    </>
+    <main className='mainPage'>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/collections' element={<Collections/>}/>
+        <Route/>
+      </Routes>
+      </main>
   )
 }
 
