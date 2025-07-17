@@ -2,11 +2,13 @@ import { useEffect } from "react"
 import AnimeDisplay from "../src/components/AnimeDisplay"
 import { useState } from "react"
 import '../css/home.css'
+import '../css/NavBar.css'
 
 
 function Home() {
 
     const [searchQuery, setSearchQuery] = useState("")
+    const [count, SetCount] = useState(1)
 
     const [animes, setAnimes] = useState([])
 
@@ -27,7 +29,7 @@ function Home() {
     async function searchAnime(query) {
 
         const response = await fetch(
-            `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}`
+            `https://api.jikan.moe/v4/anime?q=${encodeURIComponent(query)}&limit=${count}`
         );
         const data = await response.json();
         return data.data;
@@ -90,6 +92,12 @@ function Home() {
                 <input type="text" placeholder="Search" className="search-bar" value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)} />
                     <button type="submit" className="Search-btn">Search</button>
+                    <select className="count-drpdwn" onChange={(e)=> SetCount(parseInt(e.target.value))} >
+                        
+                     {[1,5,10,25].map(function (number) {
+            return <option key={number} value={number}>Count: {number}</option>;
+          })}
+          </select>
             </form>
             <div className="anime-display">
                 {animes
