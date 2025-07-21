@@ -13,6 +13,9 @@ function Home() {
     const [animes, setAnimes] = useState([])
 
 
+    
+
+
     async function getAllTopAnime() {
         try {
             const response = await fetch("https://api.jikan.moe/v4/top/anime")
