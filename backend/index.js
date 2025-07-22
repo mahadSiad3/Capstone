@@ -60,7 +60,20 @@ app.post("/signup", async (req, res) => {
     }
 })
 
+app.post('/addcollection',async (req,res)=>{
+    const {username,anime} = req.body;
+    console.log('got to line 65 on collections post request')
 
+    try {
+        const user = await collection.findOne({username})
+        console.log(user)
+        user.animeCollection.push(anime)
+        await user.save();
+        console.log(user)
+    } catch (error) {
+        console.log('error on line 71'+error)
+    }
+})
 
 
 
