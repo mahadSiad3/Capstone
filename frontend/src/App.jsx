@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,createContext } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -10,13 +10,16 @@ import NavBar from './components/NavBar'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login.jsx'
 
-
+export const UserContext = createContext()
 
 
 function App() {
-
+ const [username,setUsername] = useState('')
+  
+ 
   return (
     <div>
+      <UserContext.Provider value={{username,setUsername}}>
     <NavBar/>
     <main className='mainPage'>
       <Routes>
@@ -27,6 +30,7 @@ function App() {
         <Route/>
       </Routes>
       </main>
+      </UserContext.Provider>
       </div>
   )
 }

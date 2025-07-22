@@ -1,10 +1,14 @@
 import '/css/dropdown.css'
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect,useContext } from 'react';
+import { UserContext } from '../App';
+
 
 function AnimeDisplay({ anime }) {
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const dropdownRef = useRef();
+    const {username}= useContext(UserContext)
+    console.log(username)
 
     function dropdownButtonClick() {
         setDropdownOpen(!dropdownOpen);

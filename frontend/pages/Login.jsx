@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useState,useContext } from "react"
 import { useNavigate, Link } from "react-router-dom"
+import { UserContext } from "../src/App"
+
 
 function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
-    
+    const loggedUser = useContext(UserContext)
 
     console.log(username,password)
 
@@ -32,7 +34,7 @@ function Login() {
             const data = await response.json()
             console.log(data)
             if(data === 'user-exists'){
-                  
+                  loggedUser.setUsername(username)
                  
               navigate('/')
                console.log(response)
