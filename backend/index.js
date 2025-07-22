@@ -67,8 +67,9 @@ app.post('/addcollection',async (req,res)=>{
     try {
         const user = await collection.findOne({username})
         console.log(user)
-        const alreadyExists = user.animeCollection.some( a => a.mal_id === anime.mal_id && a.category === anime.category)
+        const alreadyExists = user.animeCollection.some( a => a.mal_id === anime.mal_id )
         if(alreadyExists){
+            console.log('anime already marked in a category')
             return res.send("anime is already marked in a category ")
         }
         user.animeCollection.push(anime)
