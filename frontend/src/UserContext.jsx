@@ -5,6 +5,7 @@ const UserContext = createContext()
 
 useUser = () => useContext(UserContext)
 const [username,setUsername]= useState('')
+
 console.log(useUser)
 if(!useUser){
   throw new Error('No user context used')
@@ -13,7 +14,6 @@ if(!useUser){
     return useUser
   }
 
-  
   
   return(
     <useUser.Provider value={{username,setUsername}}>
