@@ -1,8 +1,8 @@
-
-function Collections(){
+function collections(params) {
+    
     return(
-        <h1> no collections</h1>
+        <h1>no collections</h1>
     )
 }
 
-export default Collections
+export default collections

@@ -67,6 +67,10 @@ app.post('/addcollection',async (req,res)=>{
     try {
         const user = await collection.findOne({username})
         console.log(user)
+        const alreadyExists = user.animeCollection.some( a => a.mal_id === anime.mal_id && a.category === anime.category)
+        if(alreadyExists){
+            return res.send("anime is already marked in a category ")
+        }
         user.animeCollection.push(anime)
         await user.save();
         console.log(user)
@@ -74,6 +78,22 @@ app.post('/addcollection',async (req,res)=>{
         console.log('error on line 71'+error)
     }
 })
+
+
+app.get('/getcollection/:username', async (req, res) => {
+    const { username } = req.params;
+    try {
+        const user = await collection.findOne({ username });
+        console.log(user)
+        if (!user) {
+            return res.status(404).send("User not found");
+        }
+        res.json(user.animeCollection);
+    } catch (error) {
+        console.error("Failed to get collection:", error);
+        res.status(500).send("failed to get user collection");
+    }
+});
 
 
 
