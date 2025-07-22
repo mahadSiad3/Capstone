@@ -10,8 +10,36 @@ function AnimeDisplay({ anime }) {
         setDropdownOpen(!dropdownOpen);
     }
 
-     async function addAnimeCollection (){
-     
+     async function addAnimeCollection (category){
+     const savedAnime = {
+        mal_id: anime.mal_id,
+        title: anime.title_english || anime.title,
+        image_url: anime.images.jpg.image_url,
+        category: category
+     }
+     console.log(savedAnime)
+     console.log('line 21 reached on animedisplay')
+
+        //   const response = await fetch('http://localhost:8080/login',userData)
+        //     console.log(response)
+        //     const data = await response.json()
+        //     console.log(data)
+        //     if(data === 'user-exists'){
+                  
+                 
+        //       navigate('/')
+        //        console.log(response)
+        //          alert('user-exists')
+        //     }
+        //     else{
+        //         alert('user does not exist')
+        //     }
+                
+        //    } catch (error) {
+        //     console.log(`userdata: ${userData.body} , data: ${''}`)
+        //    }
+            
+        // }
     }
 
     useEffect(() => {

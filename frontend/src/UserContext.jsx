@@ -1,9 +1,10 @@
 
 import { createContext, useState, useContext, Children } from "react"
+
 function userContext(){
 const UserContext = createContext()
 
-useUser = () => useContext(UserContext)
+useUser () => useContext(UserContext)
 const [username,setUsername]= useState('')
 
 console.log(useUser)
@@ -20,8 +21,9 @@ if(!useUser){
       {Children}
     </useUser.Provider>
   )
-}
 
+}
+export default userContext
 
 
 
