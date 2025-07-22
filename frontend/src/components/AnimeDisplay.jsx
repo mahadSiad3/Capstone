@@ -20,6 +20,14 @@ function AnimeDisplay({ anime }) {
      console.log(savedAnime)
      console.log('line 21 reached on animedisplay')
 
+     const animeData ={
+                method:'POST',
+                headers:{'content-type':'application/json'},
+                body: JSON.stringify({username,anime:savedAnime})
+            }
+            const response = await fetch('http://localhost:8080/addcollection',animeData )
+
+            console.log(response)
         //   const response = await fetch('http://localhost:8080/login',userData)
         //     console.log(response)
         //     const data = await response.json()
