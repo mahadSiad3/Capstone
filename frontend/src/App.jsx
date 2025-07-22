@@ -9,7 +9,7 @@ import Collections from '../pages/Collections'
 import NavBar from './components/NavBar'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login.jsx'
-
+import { useUser } from './UserContext.jsx'
 
 
 
