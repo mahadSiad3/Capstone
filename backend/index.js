@@ -13,22 +13,22 @@ const port = process.env.PORT
 app.use(cors())
 app.use(express.json())
 
-app.get('/',(req,res)=>{
+app.get('/', (req, res) => {
     console.log('hello')
-   return res.status(200).send('hello world')
+    return res.status(200).send('hello world')
 })
 
-app.post("/login", async(req,res)=>{
-    const{username,password}= req.body
+app.post("/login", async (req, res) => {
+    const { username, password } = req.body
     console.log(`got to line 23 on index.js`)
     try {
-        const validateuser = await collection.findOne({username})
-        if(validateuser){
-            
+        const validateuser = await collection.findOne({ username })
+        if (validateuser) {
+
             res.json("user-exists")
         }
-        else{
-            
+        else {
+
             res.json("user-does-not-exist")
         }
 
@@ -37,22 +37,22 @@ app.post("/login", async(req,res)=>{
     }
 })
 
-app.post("/signup", async(req,res)=>{
-    const{username,password}= req.body
+app.post("/signup", async (req, res) => {
+    const { username, password } = req.body
 
-        const newUser = {
-            username: username,
-            password: password
-        }
+    const newUser = {
+        username: username,
+        password: password
+    }
     try {
-        const validateuser = await collection.findOne({username})
-        if(validateuser){
+        const validateuser = await collection.findOne({ username })
+        if (validateuser) {
             res.json("user-exists")
         }
-        else{
-            await collection.insertMany ([{username,password}])
+        else {
+            await collection.insertMany([{ username, password }])
             res.json("user-created")
-           
+
         }
 
     } catch (error) {
@@ -63,7 +63,8 @@ app.post("/signup", async(req,res)=>{
 
 
 
-app.listen(port,()=>{
-    console.log('listening on port: '+ port)
+
+app.listen(port, () => {
+    console.log('listening on port: ' + port)
     connectDb()
 })

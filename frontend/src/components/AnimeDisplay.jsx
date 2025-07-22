@@ -10,6 +10,10 @@ function AnimeDisplay({ anime }) {
         setDropdownOpen(!dropdownOpen);
     }
 
+     async function addAnimeCollection (){
+     
+    }
+
     useEffect(() => {
         function handleClickOutside(event) {
             if (
@@ -35,10 +39,10 @@ function AnimeDisplay({ anime }) {
                     <button onClick={dropdownButtonClick} className="dropbtn">Collection</button>
                     {dropdownOpen && (
                         <div className="dropdown-content">
-                            <a href="#">Watching</a>
-                            <a href="#">Plan to Watch</a>
-                            <a href="#">Completed</a>
-                            <a href="#">Dropped</a>
+                            <a onClick={() => addAnimeCollection("Watching")}>Watching</a>
+                            <a onClick={() => addAnimeCollection("Plan to Watch")}>Plan to Watch</a>
+                            <a onClick={() => addAnimeCollection("Completed")}>Completed</a>
+                            <a onClick={() => addAnimeCollection("Dropped")}>Dropped</a>
                         </div>
                     )}
                 </div>
