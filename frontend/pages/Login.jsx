@@ -35,13 +35,13 @@ function Login() {
             console.log(data)
             if(data === 'user-exists'){
                   loggedUser.setUsername(username)
-                 
+                 localStorage.setItem('username',username)
               navigate('/')
                console.log(response)
-                 alert('user-exists')
+                 //alert('user-exists')
             }
             else{
-                alert('user does not exist')
+                alert('user does not exist, please sign up using the sign up link below')
             }
                 
            } catch (error) {
