@@ -60,23 +60,28 @@ app.post("/signup", async (req, res) => {
     }
 })
 
-app.post('/addcollection',async (req,res)=>{
-    const {username,anime} = req.body;
+app.post('/addcollection', async (req, res) => {
+    const { username, anime } = req.body;
     console.log('got to line 65 on collections post request')
 
     try {
-        const user = await collection.findOne({username})
+        const user = await collection.findOne({ username })
         console.log(user)
-        const alreadyExists = user.animeCollection.some( a => a.mal_id === anime.mal_id )
-        if(alreadyExists){
+        const alreadyExists = user.animeCollection.find(a => a.mal_id === anime.mal_id)
+        if (alreadyExists) {
             console.log('anime already marked in a category')
-            return res.send("anime-marked-in-another-category ")
+            //return res.send("anime-marked-in-another-category")
+            return res.status(409).json({
+                message: 'anime-already-exists',
+                category: alreadyExists.category
+            })
         }
         user.animeCollection.push(anime)
         await user.save();
         console.log(user)
+        return res.status(200).json({ message: 'anime-added' })
     } catch (error) {
-        console.log('error on line 71'+error)
+        console.log('error on line 71' + error)
     }
 })
 

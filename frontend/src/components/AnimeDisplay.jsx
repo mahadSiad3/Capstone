@@ -31,88 +31,100 @@ function AnimeDisplay({ anime }) {
         }
         //const response = await fetch('http://localhost:8080/addcollection',animeData )
 
-         //console.log(response)
+        //console.log(response)
 
         try {
             const response = await fetch('http://localhost:8080/addcollection', animeData);
-            const result = await response.text(); // ← read the text response
+           // const result = await response.json()
+            //const result = await response.text(); 
 
-            console.log(result)
-            console.log(animeData)
+           // console.log(result)
+            //console.log(animeData)
+            //console.log(response.text())
+            //console.log(data)
 
-            if (result === 'anime-marked-in-another-category ') {
-                alert(`"${savedAnime.title}" is already in a collection.`);
+            // if (result === 'anime-marked-in-another-category ') {
+            //     alert(`"${savedAnime.title}" is already in a collection.`);
+            // } else {
+            //     alert(`"${savedAnime.title}" was added to "${category}"`);
+            // }
+            if (response.status === 409) {
+                const result = await response.json()
+                alert(`"${savedAnime.title}" is already in your "${result.category}" collection.`);
+
+            } else if (response.ok) {
+                alert(`"${savedAnime.title}" was added to your "${category}" collection.`);
             } else {
-                alert(`"${savedAnime.title}" was added to "${category}"`);
+                alert("An unexpected error occurred.");
             }
 
         } catch (error) {
             console.error("Error adding anime to collection:", error);
             alert("An error occurred while adding the anime.");
         }
-    
-    //   const response = await fetch('http://localhost:8080/login',userData)
-    //     console.log(response)
-    //     const data = await response.json()
-    //     console.log(data)
-    //     if(data === 'user-exists'){
+
+        //   const response = await fetch('http://localhost:8080/login',userData)
+        //     console.log(response)
+        //     const data = await response.json()
+        //     console.log(data)
+        //     if(data === 'user-exists'){
 
 
-    //       navigate('/')
-    //        console.log(response)
-    //          alert('user-exists')
-    //     }
-    //     else{
-    //         alert('user does not exist')
-    //     }
+        //       navigate('/')
+        //        console.log(response)
+        //          alert('user-exists')
+        //     }
+        //     else{
+        //         alert('user does not exist')
+        //     }
 
-    //    } catch (error) {
-    //     console.log(`userdata: ${userData.body} , data: ${''}`)
-    //    }
+        //    } catch (error) {
+        //     console.log(`userdata: ${userData.body} , data: ${''}`)
+        //    }
 
-    // }
-}
-
-useEffect(() => {
-    function handleClickOutside(event) {
-        if (
-            dropdownRef.current &&
-            !dropdownRef.current.contains(event.target)
-        ) {
-            setDropdownOpen(false);
-        }
+        // }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-    };
-}, []);
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target)
+            ) {
+                setDropdownOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
 
-return (
-    <div className="anime-card">
-        <div className="anime-image">
-            <img src={anime.images.jpg.image_url} alt={anime.title_english || anime.title} />
-            <div className="anime-button" ref={dropdownRef}>
-                <button onClick={dropdownButtonClick} className="dropbtn">Collection</button>
-                {dropdownOpen && (
-                    <div className="dropdown-content">
-                        <a onClick={() => addAnimeCollection("Watching")}>Watching</a>
-                        <a onClick={() => addAnimeCollection("Plan to Watch")}>Plan to Watch</a>
-                        <a onClick={() => addAnimeCollection("Completed")}>Completed</a>
-                        <a onClick={() => addAnimeCollection("Dropped")}>Dropped</a>
-                    </div>
-                )}
+    return (
+        <div className="anime-card">
+            <div className="anime-image">
+                <img src={anime.images.jpg.image_url} alt={anime.title_english || anime.title} />
+                <div className="anime-button" ref={dropdownRef}>
+                    <button onClick={dropdownButtonClick} className="dropbtn">Collection</button>
+                    {dropdownOpen && (
+                        <div className="dropdown-content">
+                            <a onClick={() => addAnimeCollection("Watching")}>Watching</a>
+                            <a onClick={() => addAnimeCollection("Plan to Watch")}>Plan to Watch</a>
+                            <a onClick={() => addAnimeCollection("Completed")}>Completed</a>
+                            <a onClick={() => addAnimeCollection("Dropped")}>Dropped</a>
+                        </div>
+                    )}
+                </div>
+
             </div>
-
+            <div className="anime-info">
+                <h3>{anime.title_english}</h3>
+                <p>{anime.aired?.prop?.from?.year}</p>
+            </div>
         </div>
-        <div className="anime-info">
-            <h3>{anime.title_english}</h3>
-            <p>{anime.aired?.prop?.from?.year}</p>
-        </div>
-    </div>
-)
+    )
 }
 
 export default AnimeDisplay
