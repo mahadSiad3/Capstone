@@ -24,7 +24,7 @@ import foobar;
 **Frontend:** React, React Router, CSS  
 **Backend:** Express, Node.js, dotenv  
 **Database:** MongoDB, Mongoose
-
+```
 ---
 
 ##  Project Structure
