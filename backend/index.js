@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
 // Login route: checks if user exists
 app.post("/login", async (req, res) => {
     const { username, password } = req.body
-    console.log(`got to line 23 on index.js`)
+    //console.log(`got to line 23 on index.js`)
     try {
         const validateuser = await collection.findOne({ username })
         if (validateuser) {
