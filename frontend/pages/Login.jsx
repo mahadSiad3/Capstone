@@ -1,6 +1,7 @@
 import { useState,useContext } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { UserContext } from "../src/App"
+import '../css/login.css'
 
 
 function Login() {
@@ -22,11 +23,7 @@ function Login() {
             
            try {
 
-            // const userData ={
-            //     method:'POST',
-            //     headers:{'content-type':'application/json'},
-            //     body: JSON.stringify({username,password})
-            // }
+           
             console.log(userData)
 
             const response = await fetch('http://localhost:8080/login',userData)
@@ -36,7 +33,7 @@ function Login() {
             if(data === 'user-exists'){
                   loggedUser.setUsername(username)
                  localStorage.setItem('username',username)
-              navigate('/')
+              navigate('/home')
                console.log(response)
                  //alert('user-exists')
             }
@@ -54,10 +51,10 @@ function Login() {
         <div className="Login-page">
 
             <form onSubmit={loginValidate}>
-                <input type="username" onChange={(event) => { setUsername(event.target.value) }} placeholder="USERNAME" />
-                <input type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="PASSWORD" />
+                <input className="input-field" type="username" onChange={(event) => { setUsername(event.target.value) }} placeholder="USERNAME" />
+                <input className="input-field" type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="PASSWORD" />
 
-                <input type="submit" value="Login" style={{backgroundColor:"black"}}/>
+                <input className="submit-btn" type="submit" value="Login" style={{backgroundColor:"black"}}/>
             </form>
             <hr />
             <p>New User?</p>

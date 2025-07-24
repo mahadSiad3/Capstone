@@ -13,8 +13,8 @@ function Home() {
     const [animes, setAnimes] = useState([])
 
 
-    
 
+  
 
     async function getAllTopAnime() {
         try {
@@ -53,7 +53,7 @@ function Home() {
         }
         loadPopularAnime()
     }, [])
-  
+
 
 
     async function searchFunction(event) {
@@ -69,50 +69,35 @@ function Home() {
         setSearchQuery("")
     }
 
-    // const animeList = [
-    //     { id: 1, title: "john", release_date: "2020" },
-    //     { id: 2, title: "ffff", release_date: "222" },
-    //     { id: 3, title: "ddddd", release_date: "3333" },
-    //     { id: 4, title: "jogggghn", release_date: "4444" }
-    // ]
 
 
+    const duplicateIds = [60489, 60636]
 
-    // useEffect (()=>{
-    //     async function loadPopularAnime(){
-    //     const loadAnime = await getAllTopAnime()
-    //     setAnimes(loadAnime)}
-    //     loadPopularAnime()
-    // },[])
 
-    const duplicateIds = [60489,60636]
-
-    
     return (
 
         <div className="homePage">
             <form onSubmit={searchFunction} className="search-form">
                 <input type="text" placeholder="Search" className="search-bar" value={searchQuery}
                     onChange={(event) => setSearchQuery(event.target.value)} />
-                    <button type="submit" className="Search-btn">Search</button>
-                    <select className="count-drpdwn" onChange={(e)=> SetCount(parseInt(e.target.value))} >
-                        
-                     {[1,5,10,25].map(function (number) {
-            return <option key={number} value={number}>Count: {number}</option>;
-          })}
-          </select>
+                <button type="submit" className="Search-btn">Search</button>
+                <select className="count-drpdwn" onChange={(e) => SetCount(parseInt(e.target.value))} >
+
+                    {[1, 5, 10, 25].map(function (number) {
+                        return <option key={number} value={number}>Count: {number}</option>;
+                    })}
+                </select>
             </form>
             <div className="anime-display">
                 {animes
                     .filter(anime =>
-                        !duplicateIds.includes(anime.mal_id) 
-                        //&&
-                        //(anime.title_english || anime.title)?.toLowerCase().startsWith(searchQuery.toLowerCase())
+                        !duplicateIds.includes(anime.mal_id)
                     )
                     .map(anime => (
                         <AnimeDisplay anime={anime} key={anime.mal_id} />
                     ))}
             </div>
+           
         </div>
 
     )

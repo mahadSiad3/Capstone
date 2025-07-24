@@ -1,0 +1,81 @@
+body {
+  background-color: #f0f4f8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+h1 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #222;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+
+.user-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.anime-card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  transition: box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.recommendedImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.recommendedName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.Status, .Score {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.2rem;
+}
+
+select, .startButton, .searchButton {
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+select:hover,
+.startButton:hover,
+.searchButton:hover {
+  background-color: #1e40af;
+}

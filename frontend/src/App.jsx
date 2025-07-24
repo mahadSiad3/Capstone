@@ -9,6 +9,7 @@ import Collections from '../pages/Collections'
 import NavBar from './components/NavBar'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login.jsx'
+import Recommendation from '../pages/Recommendation.jsx'
 
 export const UserContext = createContext()
 
@@ -25,10 +26,11 @@ function App() {
         <NavBar />
         <main className='mainPage'>
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/collections' element={<Collections />} />
             <Route path='/signup' element={<Signup />} />
-            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<Login />} />           
+            <Route path='/home' element={<Home />} />
+            <Route path='/collections' element={<Collections />} />
+            <Route path='/recommendations' element={<Recommendation />} />
             <Route />
           </Routes>
         </main>

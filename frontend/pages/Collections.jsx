@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../src/App";
+import '../css/collections.css'
 
 function collections(params) {
 
@@ -34,7 +35,7 @@ function collections(params) {
 
     function renderSection(title, animeList) {
         if (animeList.length === 0) {
-            return 'NO Collections added yet'
+            return 
         }
         else {
             return (
@@ -59,9 +60,14 @@ function collections(params) {
 
     return (
         <div className="collection-page">
-            {renderSection("Dropped", dropped)}
-            {renderSection("Plan to Watch", planToWatch)}
+
+            <h1 className="collection-title">YOUR ANIME COLLECTIONS</h1>
+            {allAnime.length === 0 && username && (
+                <p className="collection-empty">You have no anime in your collection.</p>
+            )}
             {renderSection("Watching", watching)}
+            {renderSection("Plan to Watch", planToWatch)}
+            {renderSection("Dropped", dropped)}
             {renderSection("Completed", completed)}
         </div>
     )

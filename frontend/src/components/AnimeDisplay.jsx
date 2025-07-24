@@ -31,23 +31,11 @@ function AnimeDisplay({ anime }) {
         }
         //const response = await fetch('http://localhost:8080/addcollection',animeData )
 
-        //console.log(response)
+        console.log(savedAnime)
 
         try {
             const response = await fetch('http://localhost:8080/addcollection', animeData);
-           // const result = await response.json()
-            //const result = await response.text(); 
-
-           // console.log(result)
-            //console.log(animeData)
-            //console.log(response.text())
-            //console.log(data)
-
-            // if (result === 'anime-marked-in-another-category ') {
-            //     alert(`"${savedAnime.title}" is already in a collection.`);
-            // } else {
-            //     alert(`"${savedAnime.title}" was added to "${category}"`);
-            // }
+        
             if (response.status === 409) {
                 const result = await response.json()
                 alert(`"${savedAnime.title}" is already in your "${result.category}" collection.`);
@@ -63,26 +51,7 @@ function AnimeDisplay({ anime }) {
             alert("An error occurred while adding the anime.");
         }
 
-        //   const response = await fetch('http://localhost:8080/login',userData)
-        //     console.log(response)
-        //     const data = await response.json()
-        //     console.log(data)
-        //     if(data === 'user-exists'){
-
-
-        //       navigate('/')
-        //        console.log(response)
-        //          alert('user-exists')
-        //     }
-        //     else{
-        //         alert('user does not exist')
-        //     }
-
-        //    } catch (error) {
-        //     console.log(`userdata: ${userData.body} , data: ${''}`)
-        //    }
-
-        // }
+       
     }
 
     useEffect(() => {
@@ -101,6 +70,7 @@ function AnimeDisplay({ anime }) {
         };
     }, []);
 
+    console.log(anime.title)
 
     return (
         <div className="anime-card">
@@ -122,6 +92,7 @@ function AnimeDisplay({ anime }) {
             <div className="anime-info">
                 <h3>{anime.title_english}</h3>
                 <p>{anime.aired?.prop?.from?.year}</p>
+                <p>My-AnimeList score: {anime.score || 'No Score Voted on'}</p>
             </div>
         </div>
     )

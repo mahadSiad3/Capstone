@@ -6,10 +6,6 @@
   transition: transform 0.3s ease;
 }
 
-.anime-card:hover {
-  transform: translateY(-4px);
-}
-
 .anime-image {
   position: relative;
 }

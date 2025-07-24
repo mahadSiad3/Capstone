@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
-
+import '../css/signup.css'
 
 function Signup() {
     const [username, setUsername] = useState('')
@@ -18,14 +18,18 @@ function Signup() {
                 body: JSON.stringify({username,password})
             }
             const response = await fetch('http://localhost:8080/signup',userData)
-            const data = response.json()
-
-            if(data== 'user-exists'){
-                
+            const data = await response.json()
+           
+            if(data && data== 'user-exists'){
+                 alert('User already exists Please Login')
+                navigate('/')
+            }
+            else if(!username || !password){
+                alert('please fill in both both fields')
+               
             }
             else{
                 alert('new user created')
-               
             }
                 
            } catch (error) {
@@ -37,17 +41,18 @@ function Signup() {
         <div className="Login-page">
 
             <form onSubmit={userSignup}>
-                <input type="username" onChange={(event) => { setUsername(event.target.value) }} placeholder="USERNAME" />
-                <input type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="PASSWORD" />
+                <p>SIGN-UP</p>
+                <input className="input-field" type="username" onChange={(event) => { setUsername(event.target.value) }} placeholder="USERNAME" />
+                <input className="input-field" type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="PASSWORD" />
 
-                <input type="submit" value='Sign Up' style={{backgroundColor:"black"}}/>
+                <input className="submit-btn" type="submit" value='Sign Up' style={{backgroundColor:"black"}}/>
             </form>
             <hr />
             <br/>
             <p>Existing User?</p>
         
 
-            <Link to='/login'>LOGIN</Link>
+            <Link className="login-btn" to='/'>LOGIN</Link>
         </div>
 
     )

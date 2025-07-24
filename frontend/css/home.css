@@ -7,67 +7,86 @@ body {
 }
 
 
-.homePage {
-    padding: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+.anime-card {
+  width: 250px;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
 }
 
 
+.homePage {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: white;
+  padding-top: 1px;
+}
+
 .search-form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  justify-content: center;
 }
 
 .search-bar {
-    padding: 0.6rem 1rem;
-    width: 300px;
-    font-size: 1rem;
-    border: 2px solid #4620ce;
-    border-radius: 8px;
-    outline: none;
-    transition: 0.3s;
-
-}
-
-.search-bar:focus {
-    border-color: #b2b2b2;
+  padding: 10px;
+  font-size: 16px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .Search-btn {
-    padding: 1rem;
-    background-color: #6b3c3c;
-    color: white;
-    border: 2px solid #3710c2;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-left: 16px;
-    font-size: large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 10px 20px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
 }
-
-.Search-btn:hover {
-    background-color: #571bb2;
-    border-color: #f5f5f5;
-}
-
-
-.anime-display {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
-}
-
 
 .count-drpdwn {
+ padding: 10px 20px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+}
 
-    display: flex;
-    font-size: 1rem;
-    border: 2px solid #a67db8;
-    background-color: #6b3c3c;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-left: 10%;
+.anime-display {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.anime-card {
+  background-color: whitesmoke ;
+  width: 200px;
+  text-align: center;
+  color:black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.anime-card img {
+  width: 100%;
+  /* border-radius: 6px; */
+}
+
+.anime-info {
+  margin-top: 10px;
+}
+
+.anime-info h3 {
+  font-size: 14px;
+  margin: 0;
+}
+
+.anime-info p {
+  font-size: 12px;
+  color: gray;
 }
