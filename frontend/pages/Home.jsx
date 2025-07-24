@@ -21,13 +21,11 @@ function Home() {
             const response = await fetch("https://api.jikan.moe/v4/top/anime")
             const data = await response.json()
             return data.data
-            //console.log(data.data)
         }
         catch (e) {
             console.log(e)
         }
     }
-    //getAllTopAnime()
 
     async function searchAnime(query) {
 
@@ -36,7 +34,6 @@ function Home() {
         );
         const data = await response.json();
         return data.data;
-        //return data
     };
 
     useEffect(() => {
@@ -57,7 +54,6 @@ function Home() {
 
 
     async function searchFunction(event) {
-        // alert(searchQuery)
         event.preventDefault()
         try {
             const searchResults = await searchAnime(searchQuery)

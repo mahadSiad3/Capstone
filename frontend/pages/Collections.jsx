@@ -35,7 +35,7 @@ function collections(params) {
 
     function renderSection(title, animeList) {
         if (animeList.length === 0) {
-            return 
+            return
         }
         else {
             return (

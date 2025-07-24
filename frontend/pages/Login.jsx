@@ -30,12 +30,12 @@ function Login() {
             console.log(response)
             const data = await response.json()
             console.log(data)
+            
             if(data === 'user-exists'){
                   loggedUser.setUsername(username)
                  localStorage.setItem('username',username)
               navigate('/home')
                console.log(response)
-                 //alert('user-exists')
             }
             else{
                 alert('user does not exist, please sign up using the sign up link below')

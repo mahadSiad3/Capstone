@@ -1,8 +1,5 @@
 import { useState, createContext } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import animeDisplay from './components/AnimeDisplay'
 import Home from '../pages/Home'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Collections from '../pages/Collections'
@@ -16,9 +13,6 @@ export const UserContext = createContext()
 
 function App() {
 
-  // const [username, setUsername] = useState(() => {
-  //   return localStorage.getItem('username') || ''
-  // })
   const [username, setUsername] = useState('')
   const location = useLocation()
 
@@ -29,7 +23,7 @@ function App() {
     <div>
       <UserContext.Provider value={{ username, setUsername }}>
         {!hideNav && <NavBar />}
-        {/* <NavBar /> */}
+       
         <main className='mainPage'>
           <Routes>
             <Route path='/' element={<Login />} />
