@@ -13,6 +13,7 @@ export const UserContext = createContext()
 
 function App() {
 
+  //user context created and location used for tracking the current url path.
   const [username, setUsername] = useState('')
   const location = useLocation()
 

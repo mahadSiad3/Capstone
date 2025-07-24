@@ -10,10 +10,11 @@ function AnimeDisplay({ anime }) {
     const { username } = useContext(UserContext)
     console.log(username)
 
+    //function to create the dropdown for the different categories.
     function dropdownButtonClick() {
         setDropdownOpen(!dropdownOpen);
     }
-
+    // the saved list of anime into the collecion object based on the model. 
     async function addAnimeCollection(category) {
         const savedAnime = {
             mal_id: anime.mal_id,
@@ -21,17 +22,16 @@ function AnimeDisplay({ anime }) {
             image_url: anime.images.jpg.image_url,
             category: category
         }
-        console.log(savedAnime)
-        console.log('line 21 reached on animedisplay')
+       // that is then sent as a post request creating the document
 
         const animeData = {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ username, anime: savedAnime })
         }
-        //const response = await fetch('http://localhost:8080/addcollection',animeData )
 
-        console.log(savedAnime)
+       // this then checks to make sure the anime isn't already in the document under a different category
+       // and adds it to the marked dropdown category.
 
         try {
             const response = await fetch('http://localhost:8080/addcollection', animeData);
@@ -54,6 +54,7 @@ function AnimeDisplay({ anime }) {
        
     }
 
+    //useeffect to handle dropwdown 
     useEffect(() => {
         function handleClickOutside(event) {
             if (

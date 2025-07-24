@@ -5,17 +5,17 @@ import { useContext } from "react";
 
 function NavBar() {
 
-
+    
     const { setUsername } = useContext(UserContext);
     const navigate = useNavigate();
-
+// this resets the global username removing it from local storage allowing another to log in. 
     function handleLogout() {
         setUsername("");
         localStorage.removeItem("username");
         navigate("/login");
     }
 
-
+//navigation links for each nav bar page. 
     return (
         <nav className="nav-bar-container">
             <div className="nav-bar">

@@ -19,7 +19,8 @@ function Signup() {
             }
             const response = await fetch('http://localhost:8080/signup',userData)
             const data = await response.json()
-           
+           //validation to make sure the user doesn't already exist and also 
+           // the user id is correctly filed out.
             if(data && data== 'user-exists'){
                  alert('User already exists Please Login')
                 navigate('/')
@@ -30,6 +31,7 @@ function Signup() {
             }
             else{
                 alert('new user created')
+                navigate('/home')
             }
                 
            } catch (error) {

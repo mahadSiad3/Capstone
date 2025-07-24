@@ -30,7 +30,7 @@ function Login() {
             console.log(response)
             const data = await response.json()
             console.log(data)
-            
+            // validation check to make sure each user is logs in and is navigated to their personal collecitons.
             if(data === 'user-exists'){
                   loggedUser.setUsername(username)
                  localStorage.setItem('username',username)

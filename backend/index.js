@@ -10,14 +10,15 @@ const app = express()
 
 const port = process.env.PORT
 
-app.use(cors())
-app.use(express.json())
+// Middleware setup
+app.use(cors()) // Allow requests from different origins
+app.use(express.json()) // Parse incoming JSON request bodies
 
 app.get('/', (req, res) => {
     console.log('hello')
     return res.status(200).send('hello world')
 })
-
+// Login route: checks if user exists
 app.post("/login", async (req, res) => {
     const { username, password } = req.body
     console.log(`got to line 23 on index.js`)
@@ -36,7 +37,7 @@ app.post("/login", async (req, res) => {
         res.json("errror")
     }
 })
-
+// Signup route: creates new user if username is unique
 app.post("/signup", async (req, res) => {
     const { username, password } = req.body
 
@@ -59,7 +60,7 @@ app.post("/signup", async (req, res) => {
         res.json("errror")
     }
 })
-
+// Add anime to user's collection if it doesn't already exist
 app.post('/addcollection', async (req, res) => {
     const { username, anime } = req.body;
     console.log('got to line 65 on collections post request')
@@ -84,7 +85,7 @@ app.post('/addcollection', async (req, res) => {
     }
 })
 
-
+// Get a user's anime collection
 app.get('/getcollection/:username', async (req, res) => {
     const { username } = req.params;
     try {

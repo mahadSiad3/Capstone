@@ -14,7 +14,8 @@ function Home() {
 
 
 
-  
+  // home screen search query to populate a screen of anime cards that based on their 
+  //raninking in my anime list.
 
     async function getAllTopAnime() {
         try {
@@ -85,6 +86,8 @@ function Home() {
                 </select>
             </form>
             <div className="anime-display">
+                {/* takes the list of anime, filters for the listed duplicates that are in the 
+                jikan api based on my anime list and maps them to the animedisplay compenent*/ }
                 {animes
                     .filter(anime =>
                         !duplicateIds.includes(anime.mal_id)

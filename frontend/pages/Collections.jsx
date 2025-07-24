@@ -3,11 +3,11 @@ import { UserContext } from "../src/App";
 import '../css/collections.css'
 
 function collections(params) {
-
+// userstate and context for global username and anime states
     const [allAnime, setAllAnime] = useState([]);
 
     const { username } = useContext(UserContext)
-
+// fetch request to pull the current users collection
     useEffect(() => {
         async function fetchCollection() {
             try {
@@ -25,7 +25,7 @@ function collections(params) {
     }, [username]);
 
     console.log(username)
-
+//filterd list seperating the each marked collection to its own category.
     const dropped = allAnime.filter(anime => anime.category === 'Dropped');
     console.log(dropped)
     const planToWatch = allAnime.filter(anime => anime.category === 'Plan to Watch');
