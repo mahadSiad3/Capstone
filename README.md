@@ -17,7 +17,6 @@ A full-stack anime tracker, recommendation and collection app built with **React
 ---
 
 ```java
-import foobar;
 
 ##  Tech Stack
 
@@ -26,7 +25,7 @@ import foobar;
 **Database:** MongoDB, Mongoose
 ```
 ---
-
+```javascript
 ##  Project Structure
 
 POST /signup
@@ -41,6 +40,6 @@ Checks for duplicate by mal_id
 Returns: anime-added or anime-already-exists
 GET /getcollection/:username
 Returns the user’s anime collection array
-
+```
 Author: 
 Mahad Siad
