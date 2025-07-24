@@ -16,6 +16,9 @@ A full-stack anime tracker, recommendation and collection app built with **React
 
 ---
 
+```java
+import foobar;
+
 ##  Tech Stack
 
 **Frontend:** React, React Router, CSS  
