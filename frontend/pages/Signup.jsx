@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import '../css/signup.css'
+import { BASE_URL } from "./Collections"
 
 function Signup() {
     const [username, setUsername] = useState('')
@@ -17,7 +18,7 @@ function Signup() {
                 headers:{'content-type':'application/json'},
                 body: JSON.stringify({username,password})
             }
-            const response = await fetch('http://localhost:8080/signup',userData)
+            const response = await fetch(`${BASE_URL}/signup`,userData)
             const data = await response.json()
            //validation to make sure the user doesn't already exist and also 
            // the user id is correctly filed out.

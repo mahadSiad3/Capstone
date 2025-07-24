@@ -2,6 +2,7 @@ import { useState,useContext } from "react"
 import { useNavigate, Link } from "react-router-dom"
 import { UserContext } from "../src/App"
 import '../css/login.css'
+import { BASE_URL } from "./Collections"
 
 
 function Login() {
@@ -26,7 +27,7 @@ function Login() {
            
             console.log(userData)
 
-            const response = await fetch('http://localhost:8080/login',userData)
+            const response = await fetch(`${BASE_URL}/login`,userData)
             console.log(response)
             const data = await response.json()
             console.log(data)

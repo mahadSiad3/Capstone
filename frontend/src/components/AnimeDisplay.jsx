@@ -1,6 +1,7 @@
 import '/css/dropdown.css'
 import { useState, useRef, useEffect, useContext } from 'react';
 import { UserContext } from '../App';
+import { BASE_URL } from '../../pages/Collections';
 
 
 function AnimeDisplay({ anime }) {
@@ -34,7 +35,7 @@ function AnimeDisplay({ anime }) {
        // and adds it to the marked dropdown category.
 
         try {
-            const response = await fetch('http://localhost:8080/addcollection', animeData);
+            const response = await fetch(`${BASE_URL}/addcollection`, animeData);
         
             if (response.status === 409) {
                 const result = await response.json()

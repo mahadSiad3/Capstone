@@ -10,6 +10,7 @@ const app = express()
 
 const port = process.env.PORT
 
+
 // Middleware setup
 app.use(cors()) // Allow requests from different origins
 app.use(express.json()) // Parse incoming JSON request bodies

@@ -1,8 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../src/App";
 import '../css/collections.css'
+//import { BASE_URL } from "../../backend";
 
-function collections(params) {
+export const BASE_URL = import.meta.env.VITE_BASE_URL
+
+function collections() {
+
+    
 // userstate and context for global username and anime states
     const [allAnime, setAllAnime] = useState([]);
 
@@ -11,7 +16,7 @@ function collections(params) {
     useEffect(() => {
         async function fetchCollection() {
             try {
-                const response = await fetch(`http://localhost:8080/getcollection/${username}`);
+                const response = await fetch(`${BASE_URL}/getcollection/${username}`);
                 const data = await response.json();
                 setAllAnime(data);
             } catch (error) {
