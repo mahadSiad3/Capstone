@@ -2,8 +2,7 @@ import { useEffect } from "react"
 import AnimeDisplay from "../src/components/AnimeDisplay"
 import { useState } from "react"
 import '../css/home.css'
-import '../css/NavBar.css'
-
+import '../css/Navbar.css'
 
 function Home() {
 
