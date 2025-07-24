@@ -1,13 +1,43 @@
-# React + Vite
+# Personalized Anime tracker and recommendation App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack anime tracker, recommendation and collection app built with **React**, **Express**, and **MongoDB**. Users can sign up, log in, and save from thousand of anime to personal collections like that they can come back to at any time.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Features
 
-## Expanding the ESLint configuration
+- User Authentication (Signup/Login)
+-  Anime Recommendations (Jikan API)
+-  User Anime Collections (MongoDB)
+-  Persistent Login using `localStorage`
+-  Routing with React Router
+-  Conditional NavBar (hidden on login/signup)
+-  Clean, responsive UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# Capstone
+---
+
+##  Tech Stack
+
+**Frontend:** React, React Router, CSS  
+**Backend:** Express, Node.js, dotenv  
+**Database:** MongoDB, Mongoose
+
+---
+
+##  Project Structure
+
+POST /signup
+Accepts { username, password }
+Returns: "user-exists" or "user-created"
+POST /login
+Accepts { username, password }
+Returns: "user-exists" or "user-does-not-exist"
+POST /addcollection
+Adds anime to a user’s collection
+Checks for duplicate by mal_id
+Returns: anime-added or anime-already-exists
+GET /getcollection/:username
+Returns the user’s anime collection array
+
+Author: 
+Mahad Siad
