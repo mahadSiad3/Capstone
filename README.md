@@ -41,5 +41,10 @@ Returns: anime-added or anime-already-exists
 GET /getcollection/:username
 Returns the user’s anime collection array
 ```
+
+```java
+Deployment Link: https://trackandrecfrontend.onrender.com
+
+```
 Author: 
 Mahad Siad
