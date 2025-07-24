@@ -70,9 +70,10 @@ select, .startButton, .searchButton {
   padding: 10px 16px;
   border-radius: 6px;
   font-size: 1rem;
-  margin: 0.5rem;
+  margin: 1rem;
   cursor: pointer;
 }
+
 
 select:hover,
 .startButton:hover,

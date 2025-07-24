@@ -84,28 +84,28 @@ export default function Recommend() {
       <h1> Recommendation Generator</h1>
 
       <div>
-        <select id="genreSelection" onChange={(e) => setSelectedGenre(e.target.value)}>
+        <select className="genreSelection" onChange={(e) => setSelectedGenre(e.target.value)}>
           <option value="">Select Genre</option>
           {genres.map(function (genre) {
             return <option key={genre.mal_id} value={genre.mal_id}>{genre.name}</option>;
           })}
         </select>
 
-        <select id="yearSelection" onChange={(e) => setSelectedYear(e.target.value)}>
+        <select className="yearSelection" onChange={(e) => setSelectedYear(e.target.value)}>
           <option value="">Select Year</option>
           {years.map(function (year, index) {
             return <option key={index} value={year}>{year}</option>;
           })}
         </select>
 
-        <select id="seasonSelection" onChange={(e) => setSelectedSeason(e.target.value)}>
+        <select className="seasonSelection" onChange={(e) => setSelectedSeason(e.target.value)}>
           <option value="">Select Season</option>
           {seasons.map(function (season, index) {
             return <option key={index} value={season}>{season}</option>;
           })}
         </select>
 
-        <select id="numberOfRecommendations" onChange={(e) => setRecommendationCount(parseInt(e.target.value))}>
+        <select className="numberOfRecommendations" onChange={(e) => setRecommendationCount(parseInt(e.target.value))}>
           {[1,2,3,4,5,6,7,8,9,10].map(function (number) {
             return <option key={number} value={number}>{number}</option>;
           })}

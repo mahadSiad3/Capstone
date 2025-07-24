@@ -51,6 +51,7 @@ function Login() {
         <div className="Login-page">
 
             <form onSubmit={loginValidate}>
+                 <p>LOGIN </p>
                 <input className="input-field" type="username" onChange={(event) => { setUsername(event.target.value) }} placeholder="USERNAME" />
                 <input className="input-field" type="password" onChange={(event) => { setPassword(event.target.value) }} placeholder="PASSWORD" />
 
