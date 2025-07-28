@@ -12,7 +12,25 @@ const port = process.env.PORT
 
 
 // Middleware setup
-app.use(cors()) // Allow requests from different origins
+//app.use(cors()) // Allow requests from different origins
+
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://trackandrecfrontend.onrender.com'
+];
+
+app.use(cors({
+  origin: function(origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
+
 app.use(express.json()) // Parse incoming JSON request bodies
 
 app.get('/', (req, res) => {
